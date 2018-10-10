@@ -72,7 +72,7 @@ class Carbon extends DateTime
      * 切换到月底
      * @return $this
      */
-    public function endOfDay()
+    public function lastDayOfMonth()
     {
         $this->modify('last day of this month');
         $this->setTime(23, 59, 59);
@@ -83,9 +83,31 @@ class Carbon extends DateTime
      * 切换到月初
      * @return $this
      */
-    public function startOfDay()
+    public function firstDayOfMonth()
     {
         $this->modify('first day of this month');
+        $this->setTime(0, 0, 0);
+        return $this;
+    }
+
+    /**
+     * 切换到星期天
+     * @return $this
+     */
+    public function lastDayOfWeek()
+    {
+        $this->addDays(7 - $this->format('w'));
+        $this->setTime(23, 59, 59);
+        return $this;
+    }
+
+    /**
+     * 切换到星期一
+     * @return $this
+     */
+    public function firstDayOfWeek()
+    {
+        $this->addDays(1 - $this->format('w'));
         $this->setTime(0, 0, 0);
         return $this;
     }
