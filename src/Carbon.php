@@ -51,6 +51,50 @@ class Carbon extends DateTime
 
     /**
      * @param int $value
+     * @return $this
+     */
+    public function addYears($value = 1)
+    {
+        $modify = ($value > 0 ? "+$value" : "-" . abs($value)) . " year";
+        $this->modify($modify);
+        return $this;
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function addYear()
+    {
+        return $this->addYears();
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function subYear()
+    {
+        return $this->addYears(-1);
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function subMonth()
+    {
+        return $this->addMonths(-1);
+    }
+
+    /**
+     * @param int $value
+     * @return Carbon
+     */
+    public function subMonths($value = 1)
+    {
+        return $this->addMonths(-1 * $value);
+    }
+
+    /**
+     * @param int $value
      * @return Carbon
      */
     public function addDays($value = 1)
@@ -66,6 +110,39 @@ class Carbon extends DateTime
     public function addDay()
     {
         return $this->addDays();
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function subDay()
+    {
+        return $this->addDays(-1);
+    }
+
+    /**
+     * @param int $value
+     * @return Carbon
+     */
+    public function subDays($value = 1)
+    {
+        return $this->addDays(-1 * $value);
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function addWeek()
+    {
+        return $this->addDays(7);
+    }
+
+    /**
+     * @return Carbon
+     */
+    public function subWeek()
+    {
+        return $this->addDays(-7);
     }
 
     /**
